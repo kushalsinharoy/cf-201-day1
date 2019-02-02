@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        body {background-color: powderblue;}
+        h1 {
+            color:rgb(207, 46, 40);
+            background-color:midnightblue;
+            font-family: sans-serif;
+            padding: 10px;
+            text-align: center;
+            text-shadow: 1px 1px 1px;
+        }
+        h3 {
+            background-color:rgb(120, 120, 192);
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+        ul {
+            font-family: cursive;
+            color:maroon;
+            font-weight: bold;
+        }
+        p {
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+
+        footer {
+            background: #888;
+            color: rgb(3, 3, 3);
+            padding: 10px;
+            text-align: center;
+            text-shadow: 1px 1px 1px;
+        }
+
+    </style>
+    <head>
+        <link rel="stylesheet" href="styles.css">
+        <title> Foodie Guide </title>
+    </head>
+    <body background="restaurantBackground.jpg">
+        <header>
+            <h1 style = "text-align:center"> Welcome to your Restaurant Guide </h1>
+                <h3> List of questions that needs to be answered to unlock the restaurants. </h3>
+                <p> Below are the questions if answered, then you can find the list of all the restaurants. Please refresh the page to answer the questions coming up in the popups. </p>
+                    <ul> 1. What is your first name?</ul>
+                    <ul> 2. What is your last name?</ul>
+                    <ul> 3. Are you a foodie? (Y/N) </ul>
+                    <ul> 4. Are you a Vegetarian or a Non-vegetarian? (Veg/Non-Veg) </ul>
+                    <ul> 5. Which city do you live? </ul>
+        </header>
+        <script>
+            var firstName = prompt("What is your First name?");
+            var lastName = prompt("What is your Last Name?");
+            console.log('Name:', firstName + lastName);
+            var foodieFlag = prompt("Are you a Foodie? (Y/N)");
+            console.log('Foodie?:', foodieFlag);
+
+            if (foodieFlag === 'Y') {
+                var foodType = prompt("Are you a Vegetarian or a Non-vegetarian ? (Veg/Non-Veg)");
+                console.log('Food Habit :', foodType);
+                var foodLocation = prompt("Which city do you live ?")
+                console.log('Home City :', foodLocation);
+
+                //Build the link for the food websites
+                var vegWebsite = 'https://www.yelp.com/search?find_desc=Vegetarian+Food&find_loc=' + foodLocation;
+                var nonVegWebsite = 'https://www.yelp.com/search?find_desc=NonVegetarian+Food&find_loc=' + foodLocation;
+
+                if (foodType === 'Veg') {
+                    alert('Greetings ' + firstName + ' ' + lastName + '!!! ' + 'Welcome to your ultimate food guide.');
+                    
+                    //Redirect user to vegetarian restaurants
+                    if (window.confirm('Click "Ok" to get redirected to your favorite Vegetarian restaurants around ' + foodLocation + ' Cancel to return to current website')) 
+                    {
+                        window.location.href=vegWebsite;
+                    };
+                } else if (foodType === 'Non-Veg') {
+                    alert('Greetings ' + firstName + ' ' + lastName + '!!! ' + 'Welcome to your ultimate food guide.');
+                    
+                    //Redirect user to non-vegetarian restaurants
+                    if (window.confirm('Click "Ok" to get redirected to your favorite Non-Vegetarian restaurants around ' + foodLocation + '. Cancel to return to current website.')) 
+                    {
+                        window.location.href=nonVegWebsite;
+                    };
+                }
+            } else {
+                alert("Thanks and appreciate your time searching for this restaurant finder website!!! Be a foodie.");
+            }    
+        </script>   
+        <footer>
+                Bon Appetite!!!!!
+        </footer>     
+    </body>
+</html>
